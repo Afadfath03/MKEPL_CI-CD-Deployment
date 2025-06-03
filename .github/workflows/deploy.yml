@@ -36,9 +36,9 @@ jobs:
             git pull origin main
 
             echo "(LOG) compose down..."
-            echo "${{secrets.VM_PASSWORD}}" | sudo -S docker compose down
+            docker compose down
             
             echo "(LOG) compose up..."
-            echo "${{secrets.VM_PASSWORD}}" | sudo -S docker compose up -d --build
+            docker compose up -d --build
 
             echo "(LOG) Deployment selesai."
