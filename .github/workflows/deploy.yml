@@ -19,11 +19,11 @@ jobs:
           password: ${{ secrets.VM_PASSWORD }}
           script: |
             echo "(LOG) Konek..."
-            
+
             if [ ! -d "/home/afadfath/MKEPL_CI-CD-Deployment" ]; then
                 echo "(LOG) Directory /home/afadfath/MKEPL_CI-CD-Deployment tidak ada. akan dibuat."
                 mkdir -p /home/afadfath/MKEPL_CI-CD-Deployment
-            
+
             cd /home/afadfath/MKEPL_CI-CD-Deployment
 
             if [ ! -d ".git" ]; then
