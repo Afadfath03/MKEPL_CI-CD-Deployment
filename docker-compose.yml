@@ -13,7 +13,8 @@ services:
       - test_network
 
   db:
-    image: mysql:9.3
+    image: mysql:latest
+    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root1234
       MYSQL_DATABASE: TestDeploy
