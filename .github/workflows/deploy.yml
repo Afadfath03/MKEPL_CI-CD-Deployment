@@ -40,3 +40,5 @@ jobs:
             
             echo "(LOG) compose up..."
             echo "${{secrets.VM_PASSWORD}}" | sudo -S docker compose up -d --build
+
+            echo "(LOG) Deployment selesai."
