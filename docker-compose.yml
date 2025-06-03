@@ -1,0 +1,29 @@
+services:
+  php:
+    build: ./php 
+    ports:
+      - "9000:80"
+    volumes:
+      - ./php:/var/www/html
+    depends_on:
+      - db
+
+  db:
+    image: mysql:9.3
+    environment:
+      MYSQL_ROOT_PASSWORD: admin1234
+      MYSQL_DATABASE: TestDeploy
+    ports:
+      - "9002:3306"
+    volumes:
+      - ./mysql:/docker-entrypoint-initdb.d
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "9001:80"
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: admin1234
+    depends_on:
+      - db

@@ -1,0 +1,41 @@
+name: CD Pipeline
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: SSH Connect
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.VM_IP }}
+          username: ${{ secrets.VM_USERNAME }}
+          password: ${{ secrets.VM_PASSWORD }}
+          script: |
+            echo "(LOG) Konek..."
+            
+            if [ ! -d "/home/afadfath/MKEPL_CI-CD-Deployment" ]; then
+                echo "(LOG) Directory /home/afadfath/MKEPL_CI-CD-Deployment tidak ada. akan dibuat."
+                mkdir -p /home/afadfath/MKEPL_CI-CD-Deployment
+            
+            cd /home/afadfath/MKEPL_CI-CD-Deployment
+
+            if [ ! -d ".git" ]; then
+                echo "(LOG) directory .git tidak ditemukan. cloning..."
+                git clone https://github.com/Afadfath03/MKEPL_CI-CD-Deployment.git .
+            fi
+
+            echo "(LOG) Update repo..."
+            git pull origin main
+
+            echo "(LOG) compose down..."
+            docker-compose down
+            
+            echo "(LOG) compose up..."
+            docker-compose up -d --build
