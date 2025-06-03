@@ -41,4 +41,4 @@ jobs:
             echo "(LOG) compose up..."
             docker compose up -d --build
 
-            echo "(LOG) Deployment selesai."
+            echo "(LOG) Deployment selesai"
