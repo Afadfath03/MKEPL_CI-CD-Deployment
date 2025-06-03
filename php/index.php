@@ -1,10 +1,5 @@
 <?php
-    host = "db";
-    user = "root";
-    password = "admin1234";
-    database = "TestDeploy";
-    
-    $conn = new mysqli($host, $user, $password, $database);
+    $conn = new mysqli("db", "root", "admin1234", "TestDeploy");
 
     if ($conn->connect_error) {
         echo "Connection failed: " . $conn->connect_error;
