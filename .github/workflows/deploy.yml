@@ -23,6 +23,7 @@ jobs:
             if [ ! -d "/home/afadfath/MKEPL_CI-CD-Deployment" ]; then
                 echo "(LOG) Directory /home/afadfath/MKEPL_CI-CD-Deployment tidak ada. akan dibuat."
                 mkdir -p /home/afadfath/MKEPL_CI-CD-Deployment
+            fi
 
             cd /home/afadfath/MKEPL_CI-CD-Deployment
 
