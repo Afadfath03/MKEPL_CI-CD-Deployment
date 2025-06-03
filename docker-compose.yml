@@ -5,23 +5,14 @@ services:
     build: ./php 
     ports:
       - "9000:80"
-    volumes:
-      - ./php:/var/www/html
     depends_on:
       - db
 
   db:
-    image: mysql:latest
+    build: ./mysql
     restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: root1234
-      MYSQL_DATABASE: TestDeploy
-      MYSQL_USER: admin
-      MYSQL_PASSWORD: admin1234
     ports:
       - "9002:3306"
-    volumes:
-      - ./mysql:/docker-entrypoint-initdb.d
 
   phpmyadmin:
     image: phpmyadmin:latest
