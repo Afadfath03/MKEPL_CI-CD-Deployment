@@ -9,8 +9,6 @@ services:
       - ./php:/var/www/html
     depends_on:
       - db
-    network:
-      - test_network
 
   db:
     image: mysql:latest
@@ -24,8 +22,6 @@ services:
       - "9002:3306"
     volumes:
       - ./mysql:/docker-entrypoint-initdb.d
-    networks:
-      - test_network
 
   phpmyadmin:
     image: phpmyadmin:latest
@@ -36,9 +32,3 @@ services:
       MYSQL_ROOT_PASSWORD: root1234
     depends_on:
       - db
-    networks:
-      - test_network
-
-networks:
-  test_network:
-    driver: bridge
