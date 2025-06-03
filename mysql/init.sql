@@ -5,6 +5,5 @@ CREATE TABLE IF NOT EXISTS `users` (
   `name` VARCHAR(100) NOT NULL
 );
 
-INSERT INTO `users` VALUES 
+INSERT INTO `users` (`name`) VALUES 
 ('Afad Fath');
-
